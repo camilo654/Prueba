@@ -46,6 +46,6 @@ class OutletsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def outlet_params
-      params.require(:outlet).permit(:estate)
+      params.require(:outlet).permit(:estate, :room_id)
     end
 end

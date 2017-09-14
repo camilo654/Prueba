@@ -46,6 +46,6 @@ class HouseholdAppliancesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def household_appliance_params
-      params.require(:household_appliance).permit(:name, :electricity_use)
+      params.require(:household_appliance).permit(:name, :electricity_use, :outlet_id)
     end
 end

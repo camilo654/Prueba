@@ -46,6 +46,6 @@ class RegistersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def register_params
-      params.require(:register).permit(:date, :consumption)
+      params.require(:register).permit(:date, :consumption, household_appliance_id)
     end
 end

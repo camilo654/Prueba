@@ -45,7 +45,8 @@ class CategorizationsController < ApplicationController
     end
 
     # Only allow a trusted parameter "white list" through.
-    def categorization_params
-      params.fetch(:categorization, {})
+    #params.fetch(:categorization, {})
+    def categorization_params     
+      params.require(:categorization).permit(:category_id, :household_appliance_id)
     end
 end
