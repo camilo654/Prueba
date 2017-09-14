@@ -1,4 +1,4 @@
 class Categorization < ApplicationRecord
-    belongs_to :household_apliance
+    belongs_to :household_appliance
     belongs_to :category
 end

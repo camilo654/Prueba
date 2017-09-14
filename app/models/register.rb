@@ -1,3 +1,3 @@
 class Register < ApplicationRecord
-    belongs_to :household_apliance
+    belongs_to :household_appliance
 end
