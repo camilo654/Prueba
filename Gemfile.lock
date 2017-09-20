@@ -45,12 +45,12 @@ GEM
     erubi (1.6.1)
     execjs (2.7.0)
     ffi (1.9.18)
+    ffi (1.9.18-x64-mingw32)
     ffi (1.9.18-x86-mingw32)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.6)
     libv8 (3.16.14.19)
-    libv8 (3.16.14.19-x86_64-linux)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -66,9 +66,12 @@ GEM
     mini_portile2 (2.2.0)
     minitest (5.10.3)
     mysql2 (0.4.9)
+    mysql2 (0.4.9-x64-mingw32)
     mysql2 (0.4.9-x86-mingw32)
     nio4r (2.1.0)
     nokogiri (1.8.0)
+      mini_portile2 (~> 2.2.0)
+    nokogiri (1.8.0-x64-mingw32)
       mini_portile2 (~> 2.2.0)
     nokogiri (1.8.0-x86-mingw32)
       mini_portile2 (~> 2.2.0)
@@ -132,6 +135,7 @@ GEM
 
 PLATFORMS
   ruby
+  x64-mingw32
   x86-mingw32
 
 DEPENDENCIES
