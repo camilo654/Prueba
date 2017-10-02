@@ -5,6 +5,8 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :last_name
       t.integer :telephone
 
+      t.belongs_to :usuarios, foreign_key: true
+
       t.timestamps
     end
   end

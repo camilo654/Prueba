@@ -1,4 +1,7 @@
 class Usuario < ActiveRecord::Base
+
+  has_one :user, dependent: :destroy
+
   # Include default devise modules.
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :trackable, :validatable,
