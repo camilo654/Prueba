@@ -38,6 +38,17 @@ class OutletsController < ApplicationController
     @outlet.destroy
   end
 
+    # GET /rooms/room_id/outlets
+    def show_mine
+      @outlets = Outlet.where("room_id = ?", params[:room_id])
+      if @outlets
+        render json: @outlets
+      else
+        render json: "error"
+      end
+    end
+  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_outlet
