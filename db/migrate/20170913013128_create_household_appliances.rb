@@ -4,7 +4,8 @@ class CreateHouseholdAppliances < ActiveRecord::Migration[5.1]
       t.string :name
       t.float :electricity_use
       t.references :outlet, unique: true, foreign_key: true, optional: true
-     
+      t.references :category, foreign_key: true, optional: true
+      
 
       t.timestamps
     end

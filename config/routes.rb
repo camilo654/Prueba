@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   mount_devise_token_auth_for 'Usuario', at: 'auth'
-  resources :categorizations
   resources :categories
   resources :registers
   resources :household_appliances

@@ -40,6 +40,7 @@ GEM
       tzinfo (~> 1.1)
     arel (8.0.0)
     bcrypt (3.1.11)
+    bcrypt (3.1.11-x86-mingw32)
     builder (3.2.3)
     byebug (9.1.0)
     concurrent-ruby (1.0.5)
@@ -150,6 +151,7 @@ GEM
       tzinfo (>= 1.0.0)
     warden (1.2.7)
       rack (>= 1.0)
+    wdm (0.1.1)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -160,6 +162,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  bcrypt (~> 3.1, >= 3.1.11)
   byebug
   devise_token_auth
   execjs
@@ -173,6 +176,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   therubyracer
   tzinfo-data
+  wdm (>= 0.1.0)
 
 BUNDLED WITH
    1.15.4

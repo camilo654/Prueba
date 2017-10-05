@@ -13,18 +13,9 @@
 ActiveRecord::Schema.define(version: 20170922034727) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "mame"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "categorizations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "category_id"
-    t.bigint "household_appliance_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_categorizations_on_category_id"
-    t.index ["household_appliance_id"], name: "index_categorizations_on_household_appliance_id"
   end
 
   create_table "domiciles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -40,9 +31,11 @@ ActiveRecord::Schema.define(version: 20170922034727) do
     t.string "name"
     t.float "electricity_use", limit: 24
     t.bigint "outlet_id"
+    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["outlet_id"], name: "index_household_appliances_on_outlet_id", unique: true
+    t.index ["category_id"], name: "index_household_appliances_on_category_id"
+    t.index ["outlet_id"], name: "index_household_appliances_on_outlet_id"
   end
 
   create_table "outlets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -107,9 +100,8 @@ ActiveRecord::Schema.define(version: 20170922034727) do
     t.index ["uid", "provider"], name: "index_usuarios_on_uid_and_provider", unique: true
   end
 
-  add_foreign_key "categorizations", "categories"
-  add_foreign_key "categorizations", "household_appliances"
   add_foreign_key "domiciles", "users"
+  add_foreign_key "household_appliances", "categories"
   add_foreign_key "household_appliances", "outlets"
   add_foreign_key "outlets", "rooms"
   add_foreign_key "registers", "household_appliances"
