@@ -5,7 +5,7 @@ services:
     ports:
       - "3307:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_ROOT_PASSWORD: arqui
       MYSQL_USER: user
       MYSQL_PASSWORD: arquisoft
       MYSQL_DATABASE: laboratorioDev

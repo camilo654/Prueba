@@ -10,16 +10,16 @@
 Usuario.create!(email: 'admin@admin.com', nickname: 'UOne', name: 'User One', password: '12345678', tokens: nil)
 
 
-users = User.create([{ first_name: 'User1', last_name: 'U1', telephone: '333333' }, 
+users = User.create([{ first_name: 'User1', last_name: 'U1', telephone: '333333' },
 { first_name: 'User2', last_name: 'U2', telephone: '444444' }])
 
-domiciles = Domicile.create([{ address: 'cll1 #3', city: 'City1', user: users[0] }, 
+domiciles = Domicile.create([{ address: 'cll1 #3', city: 'City1', user: users[0] },
         { address: 'cll23 #4', city: 'City3', user: users[1] }])
 
-rooms = Room.create([{ name: 'sala', domicile: domiciles[0] }, 
+rooms = Room.create([{ name: 'sala', domicile: domiciles[0] },
 { name: 'comedor', domicile: domiciles[0] },
 { name: 'habitación 2', domicile: domiciles[0] },
-{ name: 'sala', domicile: domiciles[1] }])     
+{ name: 'sala', domicile: domiciles[1] }])
 
 outlets = Outlet.create([{ estate: 'true', room: rooms[0]},
     { estate: 'false', room: rooms[0]},
@@ -40,7 +40,7 @@ household_appliances = HouseholdAppliance.create([{ name: 'Tv', electricity_use:
 categories = Category.create([{ name: 'c1' },
          { name: 'c2' },
          { name: 'c3' },
-         { name: 'c4' }])      
-         
-categorizations = Categorization.create([{ category: categories[0], household_appliance: household_appliances[0]},
-                    { category: categories[0], household_appliance: household_appliances[1]}])                              
+         { name: 'c4' }])
+
+#categorizations = Categorization.create([{ category: categories[0], household_appliance: household_appliances[0]},
+#                  { category: categories[0], household_appliance: household_appliances[1]}])                              
