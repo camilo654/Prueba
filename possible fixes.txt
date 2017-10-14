@@ -1,0 +1,12 @@
+  after_create :create_user
+
+     private
+
+  def create_user
+      User.create(id: self.id) 
+  end
+
+
+ def init_profile
+    self.create_profile!
+  end

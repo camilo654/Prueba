@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :rooms
   resources :domiciles
   resources :users
+  resources :test
 
   get 'rooms/:room_id/outlets', to: 'outlets#show_mine', as: :rooms_outlets
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 end
