@@ -1,7 +1,7 @@
 class TestController < ApplicationController
   def index
     #@users = User.all
-    msg = {:y => "sdasda", :courseId => "courseId"}
+    msg = {:x => rand(10)}
     render :json => msg
 
   end
