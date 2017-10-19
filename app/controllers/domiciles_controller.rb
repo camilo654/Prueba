@@ -38,6 +38,18 @@ class DomicilesController < ApplicationController
     @domicile.destroy
   end
 
+    # GET /users/user_id/domiciles
+    def my_house
+      @domiciles = Domicile.where("user_id = ?", params[:user_id])
+      if @domiciles
+        render json: @domiciles
+      else
+        render json: "error"
+      end
+    end
+  
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_domicile

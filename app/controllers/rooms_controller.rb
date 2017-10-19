@@ -38,6 +38,17 @@ class RoomsController < ApplicationController
     @room.destroy
   end
 
+   # GET /users/user_id/domiciles
+   def my_rooms
+    @rooms = Room.where("domicile_id = ?", params[:domicile_id])
+    if @rooms
+      render json: @rooms
+    else
+      render json: "error"
+    end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_room
