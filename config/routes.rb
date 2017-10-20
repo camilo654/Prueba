@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   resources :domiciles
   resources :users
   resources :test
-
+  resources :ldap
+  
   get 'rooms/:room_id/outlets', to: 'outlets#show_mine', as: :rooms_outlets
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
