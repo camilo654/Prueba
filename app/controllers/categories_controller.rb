@@ -38,6 +38,16 @@ class CategoriesController < ApplicationController
     @category.destroy
   end
 
+  # GET /users/user_id/categories
+  def my_categories
+    @categories = Category.where("user_id = ?", params[:user_id])
+    if @categories
+      render json: @categories
+    else
+      render json: "error"
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
@@ -46,6 +56,6 @@ class CategoriesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def category_params
-      params.require(:category).permit(:name)
+      params.require(:category).permit(:name, :user_id)
     end
 end

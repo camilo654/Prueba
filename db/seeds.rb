@@ -6,41 +6,72 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+users = User.create([{ user_name: 'user1', email: 'dfhincapiem@unal.edu.co', first_name: 'User1', last_name: 'U1', telephone: '333333', address: 'cll 3 # 4', city: 'City1' },
+                     { user_name: 'user3', email: 'wetelleza@unal.edu.co', first_name: 'User3', last_name: 'U3', telephone: '111111', address: 'kr 12 # 5', city: 'City2' },
+                     { user_name: 'user2', email: 'user2@test.com', first_name: 'User2', last_name: 'U2', telephone: '222222', address: 'cll 5 # 78', city: 'City1' }])
 
-Usuario.create!(email: 'admin@admin.com', nickname: 'UOne', name: 'User One', password: '12345678', tokens: nil)
 
+rooms = Room.create([{ name: 'sala', user: users[0] }, 
+                     { name: 'comedor', user: users[0] },
+                     { name: 'habitación', user: users[0] },
+                     { name: 'sala', user: users[1] },
+                     { name: 'estudio', user: users[1] },
+                     { name: 'cocina', user: users[1] },
+                     { name: 'dormitorio', user: users[2] },
+                     { name: 'garaje', user: users[2] },
+                     { name: 'sala', user: users[2] }
+                     ])     
+                     
+outlets = Outlet.create([{ estate: 'true', room: rooms[0]},
+                         { estate: 'false', room: rooms[0]},
+                         { estate: 'false', room: rooms[0]},
+                         { estate: 'false', room: rooms[1]},
+                         { estate: 'true', room: rooms[1]},
+                         { estate: 'true', room: rooms[1]},
+                         { estate: 'false', room: rooms[2]},
+                         { estate: 'false', room: rooms[2]},
+                         { estate: 'true', room: rooms[3]},
+                         { estate: 'false', room: rooms[3]},
+                         { estate: 'false', room: rooms[3]},
+                         { estate: 'false', room: rooms[4]},
+                         { estate: 'true', room: rooms[4]},
+                         { estate: 'true', room: rooms[4]},
+                         { estate: 'false', room: rooms[4]},
+                         { estate: 'false', room: rooms[5]},
+                         { estate: 'false', room: rooms[5]},
+                         { estate: 'false', room: rooms[5]},
+                         { estate: 'false', room: rooms[6]},
+                         { estate: 'true', room: rooms[6]},
+                         { estate: 'true', room: rooms[7]},
+                         { estate: 'false', room: rooms[8]},
+                         { estate: 'false', room: rooms[8]},
+                         { estate: 'true', room: rooms[7]}
+                        ])
 
-# users = User.create([{ first_name: 'User1', last_name: 'U1', telephone: '333333' },
-# { first_name: 'User2', last_name: 'U2', telephone: '444444' }])
+household_appliances = HouseholdAppliance.create([{ name: 'Tv', electricity_use: '5', user: users[0] },
+                                                   { name: 'dvd', electricity_use: '3', user: users[0] },
+                                                   { name: 'refrigerador', electricity_use: '2', user: users[0] },
+                                                   { name: 'Tv', electricity_use: '3', user: users[1] },
+                                                   { name: 'microondas', electricity_use: '2', user: users[1] },
+                                                   { name: 'equipo de sonido', electricity_use: '3', user: users[1] },
+                                                   { name: 'Tv2', electricity_use: '2', user: users[1] },
+                                                   { name: 'xbox', electricity_use: '3', user: users[1] },
+                                                   { name: 'Tv', electricity_use: '2', user: users[2] },
+                                                   { name: 'dvd', electricity_use: '3', user: users[2] },
+                                                   { name: 'licuadora', electricity_use: '2', user: users[2] },
+                                                   { name: 'cafetera', electricity_use: '3', user: users[0] },
+                                                   { name: 'refrigerador', electricity_use: '2', user: users[2] },
+                                                   { name: 'pc', electricity_use: '5', user: users[1] }])
 
-# domiciles = Domicile.create([{ address: 'cll1 #3', city: 'City1', user: users[0] },
-#         { address: 'cll23 #4', city: 'City3', user: users[1] }])
-
-# rooms = Room.create([{ name: 'sala', domicile: domiciles[0] },
-# { name: 'comedor', domicile: domiciles[0] },
-# { name: 'habitación 2', domicile: domiciles[0] },
-# { name: 'sala', domicile: domiciles[1] }])
-
-# outlets = Outlet.create([{ estate: 'true', room: rooms[0]},
-#     { estate: 'false', room: rooms[0]},
-#     { estate: 'false', room: rooms[0]},
-#     { estate: 'false', room: rooms[1]},
-#     { estate: 'true', room: rooms[1]},
-#     { estate: 'true', room: rooms[1]},
-#     { estate: 'false', room: rooms[2]},
-#     { estate: 'false', room: rooms[2]},
-#     { estate: 'true', room: rooms[3]},
-#     { estate: 'true', room: rooms[3]}])
-
-# household_appliances = HouseholdAppliance.create([{ name: 'Tv', electricity_use: '5', outlet: outlets[0]},
-#                               { name: 'dvd', electricity_use: '3', outlet: outlets[1]},
-#                               { name: 'fridge', electricity_use: '2', outlet: outlets[2]},
-#                               { name: 'pc', electricity_use: '5', outlet: outlets[3]}])
-
-# categories = Category.create([{ name: 'c1' },
-#          { name: 'c2' },
-#          { name: 'c3' },
-#          { name: 'c4' }])
-
-#categorizations = Categorization.create([{ category: categories[0], household_appliance: household_appliances[0]},
-#                  { category: categories[0], household_appliance: household_appliances[1]}])                              
+categories = Category.create([{ name: 'c1', user: users[0] },
+                              { name: 'c2', user: users[0] },
+                              { name: 'c3', user: users[0] },
+                              { name: 'juegos', user: users[1] },
+                              { name: 'peliculas', user: users[1] },
+                              { name: 'cocina', user: users[1] },
+                              { name: 'c1', user: users[2] },
+                              { name: 'c2', user: users[2] },
+                              { name: 'c3', user: users[2] },
+                              { name: 'c4', user: users[2] }])      
+                              
+                        

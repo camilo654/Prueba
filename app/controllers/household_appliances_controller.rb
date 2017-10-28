@@ -38,6 +38,26 @@ class HouseholdAppliancesController < ApplicationController
     @household_appliance.destroy
   end
 
+  # GET /users/user_id/household_appliances
+   def my_appliances
+    @household_appliances = HouseholdAppliance.where("user_id = ?", params[:user_id])
+    if @household_appliances
+      render json: @household_appliances
+    else
+      render json: "error"
+    end
+  end
+
+  # GET /categories/:category_id/household_appliances
+    def in_category
+      @household_appliances = HouseholdAppliance.where("category_id = ?", params[:category_id])
+      if @household_appliances
+        render json: @household_appliances
+      else
+        render json: "error"
+      end
+    end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_household_appliance

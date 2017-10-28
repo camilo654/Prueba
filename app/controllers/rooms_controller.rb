@@ -24,6 +24,15 @@ class RoomsController < ApplicationController
     end
   end
 
+  def my_outlets
+    @outlets = @room.outlets
+    if @outlets
+      render json: @outlets
+    else
+      render json: "error"
+    end
+  end
+
   # PATCH/PUT /rooms/1
   def update
     if @room.update(room_params)
@@ -47,8 +56,7 @@ class RoomsController < ApplicationController
       render json: "error"
     end
   end
-
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_room

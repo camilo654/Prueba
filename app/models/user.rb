@@ -1,11 +1,16 @@
 class User < ApplicationRecord
-	belongs_to :usuario
-    has_one :domicile, dependent: :destroy
-
-    before_create :build_default_domicile
+	
+	has_many :rooms, dependent: :destroy
+    has_many :household_appliances, dependent: :destroy
+    has_many :categories, dependent: :destroy
     
-    def build_default_domicile
-        build_domicile
-        true
-    end
+
+    #before_create :build_default_domicile
+
+    
+    #def build_default_domicile
+    #    build_domicile
+    #    true
+    #end
+    
 end
