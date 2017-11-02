@@ -5,7 +5,11 @@ class HouseholdAppliance < ApplicationRecord
     has_many :registers
     #has_many :categories, through: :categorizations
     
-    def self.by_id( HouseholdAppliance )
-    	load.find_by( {id: HouseholdAppliance} )
+	#def self.load
+    #	includes( :household_appliance)
+  	#end
+
+    def self.by_id( household_appliance_id )
+    	load.find_by( {id: household_appliance_id} )
   	end
 end

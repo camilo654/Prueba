@@ -50,4 +50,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 
-gem 'bcrypt', '~> 3.1', '>= 3.1.11'
+gem 'bcrypt', platforms: :ruby
+
+gem 'hirb', '~> 0.7.3'
