@@ -1,8 +1,8 @@
 class TestController < ApplicationController
-  def index
+  def create
     #@users = User.all
-    msg = {:x => rand(10)}
-    render :json => msg
 
+    msg = {:userValid => true}
+    render :json => msg
   end
 end
