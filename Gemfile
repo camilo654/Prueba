@@ -8,6 +8,8 @@ end
 
 gem 'therubyracer', :platforms => :ruby
 gem 'execjs'
+gem 'wash_out'
+
 gem 'net-ldap'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
