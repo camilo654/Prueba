@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   resources :users
   resources :test
   resources :ldap
-  
+  resources :test2
+
   get 'rooms/:room_id/outlets', to: 'outlets#show_mine', as: :rooms_outlets
   get 'users/:user_id/rooms', to: 'rooms#my_rooms', as: :user_rooms
   get 'users/:user_id/categories', to: 'categories#my_categories', as: :user_categories
