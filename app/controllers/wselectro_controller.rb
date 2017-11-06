@@ -38,7 +38,7 @@ class WselectroController < ApplicationController
   def check
     user = User.by_email(params[:email])
     validate = true
-    if !(User.exists?(user.id))
+    if !(user)
       validate = false 
     end
     render :soap => validate

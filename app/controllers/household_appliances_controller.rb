@@ -74,6 +74,22 @@ class HouseholdAppliancesController < ApplicationController
       render json: @current_consumption
     end
 
+    def total_consumption
+      @household_appliances = HouseholdAppliance.where("user_id = ?", params[:user_id])
+      @current_consumption = 0
+      for appliance in @household_appliances
+        if appliance.outlet_id
+          @outlet = Outlet.find(appliance.outlet_id)
+          if @outlet.estate
+            @current_consumption = @current_consumption + appliance.electricity_use
+          else
+            asd
+          end                 
+        end
+      end
+      render json: @current_consumption
+    end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_household_appliance

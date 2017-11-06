@@ -1,5 +1,7 @@
 class OutletsController < ApplicationController
   before_action :set_outlet, only: [:show, :update, :destroy]
+  before_update :consumption, only [:update]
+  #after_update :consumption, only [:update]
 
   # GET /outlets
   def index
@@ -16,7 +18,6 @@ class OutletsController < ApplicationController
   # POST /outlets
   def create
     @outlet = Outlet.new(outlet_params)
-
     if @outlet.save
       render json: @outlet, status: :created, location: @outlet
     else
@@ -26,6 +27,11 @@ class OutletsController < ApplicationController
 
   # PATCH/PUT /outlets/1
   def update
+    #@household_appliances = HouseholdAppliance.where("user_id = ?", params[:room_id])
+    # for appliance in @household_appliances
+    #     if appliance.outlet_id
+    #       @outlet = Outlet.find(appliance.outlet_id)
+    #       puts out
     if @outlet.update(outlet_params)
       render json: @outlet
     else
@@ -36,6 +42,12 @@ class OutletsController < ApplicationController
   # DELETE /outlets/1
   def destroy
     @outlet.destroy
+  end
+
+  #Definir ruta
+  def consumption
+    outlet = Outlet.find(params[:id])
+    outlet.consumption(params[:id])
   end
 
     # GET /rooms/room_id/outlets
