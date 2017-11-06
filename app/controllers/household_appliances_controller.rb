@@ -1,6 +1,8 @@
 class HouseholdAppliancesController < ApplicationController
   before_action :set_household_appliance, only: [:show, :update, :destroy]
 
+
+  @@ary = Array.new
   # GET /household_appliances
   def index
     @household_appliances = HouseholdAppliance.all
@@ -61,17 +63,27 @@ class HouseholdAppliancesController < ApplicationController
 
     # GET /users/:user_id/current_consumption
     def current_consumption
+
       @household_appliances = HouseholdAppliance.where("user_id = ?", params[:user_id])
       @current_consumption = 0
       for appliance in @household_appliances
-        if appliance.outlet_id 
+        if appliance.outlet_id
           @outlet = Outlet.find(appliance.outlet_id)
           if @outlet.estate
             @current_consumption = @current_consumption + appliance.electricity_use
-          end                 
+          end
         end
       end
-      render json: @current_consumption
+
+      if @@ary.length  == 0
+        @@ary  = Array.new(16,@current_consumption)
+
+      else
+        @@ary .push(@current_consumption)
+        @@ary .shift()
+      end
+      #render json: @current_consumption
+      render json: @@ary
     end
 
   private
