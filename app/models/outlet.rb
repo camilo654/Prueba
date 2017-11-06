@@ -3,11 +3,40 @@ class Outlet < ApplicationRecord
     has_one :household_appliance
     has_many :records, dependent: :destroy
 
-    #after_save :guardar_registro, on: :update
+    #before_update :prueba, on: :update
 
     #def self.by_light( light_id )
      #   load.where( {light_id: light_id} )
     #end
+    # def consumption
+    #   puts "Hola"
+    #   outlet = Outlet.find("1")
+    #   initial = outlet.updated_at.localtime
+    #   puts initial
+    #   puts outlet
+    #   final = Time.now
+    #   puts final
+    #   ha = outlet.household_appliance
+    #   puts ha
+    #   tiempo =(final - initial)
+    #   puts tiempo
+    #   consumption = (final - initial)/3600*ha.electricity_use
+    #   puts "Consumo:"
+    #   puts consumption
+    #   ha.update(consumption: consumption)
+    #   ha.consumption = consumption
+    #   puts ha.consumption
+    # end
+
+    def consumption( outlet_id )
+      puts "Hola"
+      outlet = Outlet.find( outlet_id )
+      initial = outlet.updated_at.localtime
+      final = Time.now
+      ha = outlet.household_appliance
+      consumption = (final - initial)/3600*ha.electricity_use
+      ha.update(consumption: consumption)
+    end
 
  #   def lights
   #      @lights = Array.new
@@ -28,12 +57,6 @@ class Outlet < ApplicationRecord
        # end
     #end
 
-  def self.by_household
-    #find_by( {household_appliance: household_appliance_id} )
-    #HouseholdAppliance.where("outlet_id = ?", :id )
-    puts self.household_appliance
-  end
-
     #@household_appliances = HouseholdAppliance.where("outlet_id = ?", params[:outlet_id] )
 
     #Outlet.household_appliances
@@ -42,16 +65,17 @@ class Outlet < ApplicationRecord
     #by_id(self.household_appliance_id)
     #@records = Record.by_record(self.by_outlet)
 
-    # private
-    # 	def guardar_registro            
+  # private
+  #   def guardar_registro
 
-    # 		if self.estate?
-    # 			Record.create(household_appliances: household_appliance_id, estate: true)
-    # 		else
-    # 			Record.create(household_appliances: household_appliance_id, estate: false)
-    # 			:calcula_consumo
-    # 		end
-    # 	end
+  #     if self.estate?
+  #       Record.create(household_appliances: household_appliance_id, estate: true)
+  #     else
+  #       Record.create(household_appliances: household_appliance_id, estate: false)
+  #       :calcula_consumo
+  #     end
+  #   end
+
 
     # 	def calcula_consumo
     #         #Va a la tabla Record y con el id busca el ultimo registro con estate = 0
