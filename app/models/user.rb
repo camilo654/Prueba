@@ -7,6 +7,18 @@ class User < ApplicationRecord
 
     #before_create :build_default_domicile
 
+    def self.by_email( user_email )
+    	self.find_by( {email: user_email} )
+  	end
+
+  	def householdApps
+  		@HAs = Array.new
+    	self.household_appliances.each do |ha|
+    			@HAs.push( ha.id )
+      	end
+    	HouseholdAppliance.by_ids( @lights ) 			
+  	end
+
     
     #def build_default_domicile
     #    build_domicile

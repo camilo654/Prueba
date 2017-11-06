@@ -12,4 +12,9 @@ class HouseholdAppliance < ApplicationRecord
     def self.by_id( household_appliance_id )
     	load.find_by( {id: household_appliance_id} )
   	end
+
+    def self.by_ids( ids )
+        HouseholdAppliance.find( ids )
+    end
+
 end

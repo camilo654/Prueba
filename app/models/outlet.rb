@@ -28,7 +28,11 @@ class Outlet < ApplicationRecord
        # end
     #end
 
-    #@household_appliances = HouseholdAppliance.where("outlet_id = ?", self.id )
+  def self.by_household
+    #find_by( {household_appliance: household_appliance_id} )
+    #HouseholdAppliance.where("outlet_id = ?", :id )
+    puts self.household_appliance
+  end
 
     #@household_appliances = HouseholdAppliance.where("outlet_id = ?", params[:outlet_id] )
 
