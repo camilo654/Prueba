@@ -48,21 +48,6 @@ outlets = Outlet.create([{ estate: 'true', room: rooms[0]},
                          { estate: 'true', room: rooms[7]}
                         ])
 
-household_appliances = HouseholdAppliance.create([{ name: 'Tv', electricity_use: '5', user: users[0] },
-                                                   { name: 'dvd', electricity_use: '3', user: users[0] },
-                                                   { name: 'refrigerador', electricity_use: '2', user: users[0] },
-                                                   { name: 'Tv', electricity_use: '3', user: users[1] },
-                                                   { name: 'microondas', electricity_use: '2', user: users[1] },
-                                                   { name: 'equipo de sonido', electricity_use: '3', user: users[1] },
-                                                   { name: 'Tv2', electricity_use: '2', user: users[1] },
-                                                   { name: 'xbox', electricity_use: '3', user: users[1] },
-                                                   { name: 'Tv', electricity_use: '2', user: users[2] },
-                                                   { name: 'dvd', electricity_use: '3', user: users[2] },
-                                                   { name: 'licuadora', electricity_use: '2', user: users[2] },
-                                                   { name: 'cafetera', electricity_use: '3', user: users[0] },
-                                                   { name: 'refrigerador', electricity_use: '2', user: users[2] },
-                                                   { name: 'pc', electricity_use: '5', user: users[1] }])
-
 categories = Category.create([{ name: 'c1', user: users[0] },
                               { name: 'c2', user: users[0] },
                               { name: 'c3', user: users[0] },
@@ -72,6 +57,19 @@ categories = Category.create([{ name: 'c1', user: users[0] },
                               { name: 'c1', user: users[2] },
                               { name: 'c2', user: users[2] },
                               { name: 'c3', user: users[2] },
-                              { name: 'c4', user: users[2] }])      
-                              
-                        
+                              { name: 'c4', user: users[2] }]) 
+
+household_appliances = HouseholdAppliance.create([{ name: 'Tv', electricity_use: '5', user: users[0], outlet_id: outlets[0], category_id: categories[0], consumption: 0 },
+                                                   { name: 'dvd', electricity_use: '3', user: users[0], outlet_id: outlets[0], category_id: categories[1], consumption: 0 },
+                                                   { name: 'refrigerador', electricity_use: '2', user: users[0], outlet_id: outlets[0], category_id: categories[2], consumption: 0 },
+                                                   { name: 'Tv', electricity_use: '3', user: users[1], outlet_id: outlets[12], category_id: categories[3], consumption: 0 },
+                                                   { name: 'microondas', electricity_use: '2', user: users[1], outlet_id: outlets[14], category_id: categories[4], consumption: 0 },
+                                                   { name: 'equipo de sonido', electricity_use: '3', user: users[1], outlet_id: outlets[13], category_id: categories[5], consumption: 0 },
+                                                   { name: 'Tv2', electricity_use: '2', user: users[1], outlet_id: outlets[13], category_id: categories[3], consumption: 0 },
+                                                   { name: 'xbox', electricity_use: '3', user: users[1], outlet_id: outlets[15], category_id: categories[3], consumption: 0 },
+                                                   { name: 'Tv', electricity_use: '2', user: users[2], consumption: 0 },
+                                                   { name: 'dvd', electricity_use: '3', user: users[2], consumption: 0 },
+                                                   { name: 'licuadora', electricity_use: '2', user: users[2], consumption: 0 },
+                                                   { name: 'cafetera', electricity_use: '3', user: users[0], consumption: 0 },
+                                                   { name: 'refrigerador', electricity_use: '2', user: users[2], consumption: 0 },
+                                                   { name: 'pc', electricity_use: '5', user: users[1], consumption: 0 }])

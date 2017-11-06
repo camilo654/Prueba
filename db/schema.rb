@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20171016234017) do
   create_table "household_appliances", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.float "electricity_use", limit: 24
+    t.float "consumption", limit: 24
     t.bigint "outlet_id"
     t.bigint "category_id"
     t.bigint "user_id"
