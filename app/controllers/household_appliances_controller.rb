@@ -38,6 +38,26 @@ class HouseholdAppliancesController < ApplicationController
     @household_appliance.destroy
   end
 
+  #Ruta
+  def total_consumption
+    @household_appliances = HouseholdAppliance.where("user_id = ?", params[:user_id])
+    @current_consumption = 0
+    for appliance in @household_appliances
+      if appliance.outlet_id
+        @outlet = Outlet.find(appliance.outlet_id)
+        if !(@outlet.estate)
+          @current_consumption = @current_consumption + appliance.consumption
+        else
+          initial = @outlet.updated_at
+          final = Time.now
+          @current_consumption = @current_consumption + (final - initial)/3600*appliance.electricity_use
+          @outlet.update(updated_at: Time.now)
+        end                 
+      end
+    end
+    render json: @current_consumption
+  end
+
   # GET /users/user_id/household_appliances
    def my_appliances
     @household_appliances = HouseholdAppliance.where("user_id = ?", params[:user_id])
@@ -74,21 +94,7 @@ class HouseholdAppliancesController < ApplicationController
       render json: @current_consumption
     end
 
-    def total_consumption
-      @household_appliances = HouseholdAppliance.where("user_id = ?", params[:user_id])
-      @current_consumption = 0
-      for appliance in @household_appliances
-        if appliance.outlet_id
-          @outlet = Outlet.find(appliance.outlet_id)
-          if @outlet.estate
-            @current_consumption = @current_consumption + appliance.electricity_use
-          else
-            asd
-          end                 
-        end
-      end
-      render json: @current_consumption
-    end
+    
 
   private
     # Use callbacks to share common setup or constraints between actions.

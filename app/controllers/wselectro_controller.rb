@@ -28,7 +28,7 @@ class WselectroController < ApplicationController
     #consumo = 3.0
 
     #Se devuelve el consumo
-    render :soap => consumo
+    render :soap => consumption
   end
 
   # check case

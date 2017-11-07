@@ -1,7 +1,5 @@
 class OutletsController < ApplicationController
   before_action :set_outlet, only: [:show, :update, :destroy]
-  before_update :consumption, only [:update]
-  #after_update :consumption, only [:update]
 
   # GET /outlets
   def index
