@@ -31,10 +31,10 @@ class Outlet < ApplicationRecord
     def consumption( outlet_id )
       puts "Hola"
       outlet = Outlet.find( outlet_id )
-      initial = outlet.updated_at.localtime
+      initial = outlet.updated_at
       final = Time.now
       ha = outlet.household_appliance
-      consumption = (final - initial)/3600*ha.electricity_use
+      consumption = consumption + (final - initial)/3600*ha.electricity_use
       ha.update(consumption: consumption)
     end
 
