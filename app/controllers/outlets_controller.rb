@@ -44,8 +44,8 @@ class OutletsController < ApplicationController
 
   #Definir ruta
   def consumption
-    outlet = Outlet.find(params[:id])
-    outlet.consumption(params[:id])
+    @outlet = Outlet.find(params[:outlet_id])
+    @outlet.consumption(@outlet.id)
   end
 
     # GET /rooms/room_id/outlets

@@ -34,6 +34,7 @@ class Outlet < ApplicationRecord
       initial = outlet.updated_at
       final = Time.now
       ha = outlet.household_appliance
+      consumption = ha.consumption
       consumption = consumption + (final - initial)/3600*ha.electricity_use
       ha.update(consumption: consumption)
     end

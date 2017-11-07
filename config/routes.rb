@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'users/search/:email', to: 'users#current_user', constraints: { :email => /.+@.+\..*/ }, as: :current_user
   get 'categories/:category_id/household_appliances', to: 'household_appliances#in_category', as: :category_appliances
   get 'users/:user_id/total_consumption', to: 'household_appliances#total_consumption', as: :user_total_consumption
+  get 'outlets/:outlet_id/consumption', to: 'outlets#consumption', as: :outlet_consumption
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end
