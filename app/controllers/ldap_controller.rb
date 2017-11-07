@@ -4,7 +4,7 @@ require 'net/ldap' # gem install net-Ldap
 class LdapController < ApplicationController
   def connect
   	ldap = Net::LDAP.new(
-  			host: '192.168.99.101',
+  			host: '192.168.99.102',
   			port: 389,
   			auth: {
   				method: :simple,
@@ -21,7 +21,7 @@ class LdapController < ApplicationController
     email = email[/\A\w+/].downcase
     if connect()
       ldap = Net::LDAP.new(
-          host: '192.168.99.101',
+          host: '192.168.99.102',
           port: 389,
           auth: {
             method: :simple,

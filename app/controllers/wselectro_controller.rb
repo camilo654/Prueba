@@ -8,11 +8,16 @@ class WselectroController < ApplicationController
 
     # puts params[:email]
     user = User.by_email(params[:email])
-    consumption = 0.0
-    user.household_appliances.each do |ha|
-      consumption = consumption + ha.consumption
-      puts "lt.consumption = ", ha.consumption
+    consumption = -1.0
+    if user
+      consumption = 0.0
+      user.household_appliances.each do |ha|
+        consumption = consumption + ha.consumption
+        puts "lt.consumption = ", ha.consumption
+      end
     end
+
+
     # puts consumption
     # render :soap => consumption
 
@@ -28,7 +33,7 @@ class WselectroController < ApplicationController
     #consumo = 3.0
 
     #Se devuelve el consumo
-    render :soap => consumo
+    render :soap => consumption
   end
 
   # check case

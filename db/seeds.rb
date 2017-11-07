@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-users = User.create([{ user_name: 'user1', email: 'dfhincapiem@unal.edu.co', first_name: 'User1', last_name: 'U1', telephone: '333333', address: 'cll 3 # 4', city: 'City1' },
+users = User.create([{ user_name: 'user1', email: 'cdomingo@unal.edu.co', first_name: 'User1', last_name: 'U1', telephone: '333333', address: 'cll 3 # 4', city: 'City1' },
                      { user_name: 'user3', email: 'wetelleza@unal.edu.co', first_name: 'User3', last_name: 'U3', telephone: '111111', address: 'kr 12 # 5', city: 'City2' },
                      { user_name: 'user2', email: 'user2@test.com', first_name: 'User2', last_name: 'U2', telephone: '222222', address: 'cll 5 # 78', city: 'City1' }])
 
@@ -59,7 +59,7 @@ categories = Category.create([{ name: 'c1', user: users[0] },
                               { name: 'c3', user: users[2] },
                               { name: 'c4', user: users[2] }]) 
 
-household_appliances = HouseholdAppliance.create([{ name: 'Tv', electricity_use: '5', user: users[0], outlet_id: outlets[0], category_id: categories[0], consumption: 0 },
+household_appliances = HouseholdAppliance.create([{ name: 'Tv', electricity_use: '5', user: users[0], outlet_id: outlets[0], category_id: categories[0], consumption: 57 },
                                                    { name: 'dvd', electricity_use: '3', user: users[0], outlet_id: outlets[0], category_id: categories[1], consumption: 0 },
                                                    { name: 'refrigerador', electricity_use: '2', user: users[0], outlet_id: outlets[0], category_id: categories[2], consumption: 0 },
                                                    { name: 'Tv', electricity_use: '3', user: users[1], outlet_id: outlets[12], category_id: categories[3], consumption: 0 },
