@@ -3,6 +3,7 @@ class HouseholdAppliancesController < ApplicationController
 
 
   @@ary = Array.new
+
   # GET /household_appliances
   def index
     @household_appliances = HouseholdAppliance.all
@@ -40,6 +41,28 @@ class HouseholdAppliancesController < ApplicationController
     @household_appliance.destroy
   end
 
+  #Ruta
+  def total_consumption
+    @household_appliances = HouseholdAppliance.where("user_id = ?", params[:user_id])
+    @current_consumption = 0
+    for appliance in @household_appliances
+      if appliance.outlet_id
+        @outlet = Outlet.find(appliance.outlet_id)
+        if !(@outlet.estate)
+          @current_consumption = @current_consumption + appliance.consumption
+        else
+          initial = @outlet.updated_at
+          final = Time.now
+          @appliance_consumption = appliance.consumption + (final - initial)/3600*appliance.electricity_use
+          @current_consumption = @current_consumption + @appliance_consumption
+          @outlet.update(updated_at: Time.now)
+          appliance.update(consumption: @appliance_consumption)
+        end
+      end
+    end
+    render json: @current_consumption
+  end
+
   # GET /users/user_id/household_appliances
    def my_appliances
     @household_appliances = HouseholdAppliance.where("user_id = ?", params[:user_id])
@@ -64,27 +87,29 @@ class HouseholdAppliancesController < ApplicationController
     # GET /users/:user_id/current_consumption
     def current_consumption
 
-      @household_appliances = HouseholdAppliance.where("user_id = ?", params[:user_id])
-      @current_consumption = 0
-      for appliance in @household_appliances
-        if appliance.outlet_id
-          @outlet = Outlet.find(appliance.outlet_id)
-          if @outlet.estate
-            @current_consumption = @current_consumption + appliance.electricity_use
+        @household_appliances = HouseholdAppliance.where("user_id = ?", params[:user_id])
+        @current_consumption = 0
+        for appliance in @household_appliances
+          if appliance.outlet_id
+            @outlet = Outlet.find(appliance.outlet_id)
+            if @outlet.estate
+              @current_consumption = @current_consumption + appliance.electricity_use
+            end
           end
         end
+
+        if @@ary.length  == 0
+          @@ary  = Array.new(16,@current_consumption)
+
+        else
+          @@ary .push(@current_consumption)
+          @@ary .shift()
+        end
+        #render json: @current_consumption
+        render json: @@ary
       end
 
-      if @@ary.length  == 0
-        @@ary  = Array.new(16,@current_consumption)
 
-      else
-        @@ary .push(@current_consumption)
-        @@ary .shift()
-      end
-      #render json: @current_consumption
-      render json: @@ary
-    end
 
   private
     # Use callbacks to share common setup or constraints between actions.
