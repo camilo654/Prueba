@@ -3,6 +3,7 @@ class HouseholdAppliancesController < ApplicationController
 
 
   @@ary = Array.new
+  @@user = String.new
 
   # GET /household_appliances
   def index
@@ -98,13 +99,15 @@ class HouseholdAppliancesController < ApplicationController
           end
         end
 
-        if @@ary.length  == 0
+        if @@ary.length  == 0 or @@user!=params[:user_id]
+
           @@ary  = Array.new(16,@current_consumption)
 
         else
-          @@ary .push(@current_consumption)
-          @@ary .shift()
+              @@ary .push(@current_consumption)
+              @@ary .shift()
         end
+        @@user = params[:user_id]
         #render json: @current_consumption
         render json: @@ary
       end
