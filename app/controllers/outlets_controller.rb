@@ -57,6 +57,34 @@ class OutletsController < ApplicationController
         render json: "error"
       end
     end
+
+  # GET /users/:user_id/percent
+  def percent
+    @percent = 0
+    @turn_on = 0
+    @moutlets = Array.new
+    @rooms = Room.where("user_id = ?", params[:user_id])
+     for room in @rooms
+      @outlets = Outlet.where(room_id: room.id)
+      for outlet in @outlets
+        @moutlets.push(outlet)
+      end
+     end
+
+     if @moutlets
+      for moutlet in @moutlets
+        if moutlet.estate
+          @turn_on = @turn_on + 1
+        end
+      end
+      @percent = (@turn_on*100)/(@moutlets.length)
+      #puts @turn_on
+      #puts @moutlets.length
+      render json: @percent
+     else
+      render json: "error"
+     end
+  end 
   
   private
     # Use callbacks to share common setup or constraints between actions.
