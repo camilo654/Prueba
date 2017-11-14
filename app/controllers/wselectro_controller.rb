@@ -11,9 +11,10 @@ class WselectroController < ApplicationController
     consumption = -1.0
     if user
       consumption = 0.0
-      user.household_appliances.each do |ha|
-        consumption = consumption + ha.consumption
-        puts "lt.consumption = ", ha.consumption
+      consumption = user.total_consumption(user.id)
+      #user.household_appliances.each do |ha|
+      #  consumption = consumption + ha.consumption
+      #  puts "lt.consumption = ", ha.consumption
       end
     end
 

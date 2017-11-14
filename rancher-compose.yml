@@ -1,0 +1,4 @@
+contdb:
+  scale: 2
+contapp:
+  scale: 2
