@@ -1,6 +1,6 @@
 version: '2'
 services:
-  db:
+  contdb:
     image: mysql
     ports:
       - "3307:3306"
@@ -9,11 +9,12 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: arquisoft
       MYSQL_DATABASE: laboratorioDev
-      MYSQL_HOST: db
-  web:
-    build: .
-    command: bash -c "sleep 120 && rm -f tmp/pids/server.pid && bundle exec rails db:migrate && bundle exec rails s -p 3000 -b '0.0.0.0'"
+      MYSQL_HOST: contdb
+  contapp:
+    #build: .
+    image: wilson911013/electro
+    command: bash -c "sleep 180 && rm -f tmp/pids/server.pid && bundle exec rails db:migrate && bundle exec rails s -p 3000 -b '0.0.0.0'"
     ports:
       - "3000:3000"
     depends_on:
-      - db
+      - contdb
