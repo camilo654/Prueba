@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'users/:user_id/percent', to: 'outlets#percent', as: :user_percent
   get 'outlets/:outlet_id/household_appliances', to: 'outlets#my_appliance', as: :outlet_appliance
   get 'users/:user_id/available', to: 'household_appliances#appliances_available', as: :user_available
+  get 'users/:user_id/nocat', to: 'household_appliances#appliances_nocat', as: :user_nocat
   post 'categories/:category_id/turn', to: 'categories#turn', as: :category_turn
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
