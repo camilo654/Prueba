@@ -86,6 +86,16 @@ class OutletsController < ApplicationController
      end
   end 
   
+    # GET /outlets/outlet_id/household_appliances
+    def my_appliance
+      @appliance =  HouseholdAppliance.where("outlet_id = ?", params[:outlet_id])
+      if @appliance
+        render json: @appliance
+      else
+        render json: "error"
+      end
+    end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_outlet

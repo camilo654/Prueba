@@ -48,6 +48,32 @@ class CategoriesController < ApplicationController
     end
   end
 
+  # GET /categories/:category_id/turn
+  def turn
+    @household_appliances = HouseholdAppliance.where("category_id = ?", params[:category_id])
+    for appliance in @household_appliances
+      if appliance.outlet_id
+        @outlet = Outlet.find(appliance.outlet_id)
+        @outlet.update(estate: params[:nestate])
+        
+      else
+        render json: "paila perrito"
+      end
+    end
+  end
+
+  
+
+    # GET /categories/:category_id/household_appliances
+    def in_category
+      @household_appliances = HouseholdAppliance.where("category_id = ?", params[:category_id])
+      if @household_appliances
+        render json: @household_appliances
+      else
+        render json: "error"
+      end
+    end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
