@@ -38,15 +38,15 @@ class WselectroController < ApplicationController
   end
 
   # check case
-  soap_action "check",
-              :args   => { :email => :string},
-              :return => :boolean
-  def check
-    user = User.by_email(params[:email])
-    validate = true
-    if !(user)
-      validate = false 
-    end
-    render :soap => validate
-  end
+  # soap_action "check",
+  #             :args   => { :email => :string},
+  #             :return => :boolean
+  # def check
+  #   user = User.by_email(params[:email])
+  #   validate = true
+  #   if !(user)
+  #     validate = false 
+  #   end
+  #   render :soap => validate
+  # end
 end
