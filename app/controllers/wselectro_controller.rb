@@ -18,20 +18,8 @@ class WselectroController < ApplicationController
       #end
     end
 
-
     # puts consumption
     # render :soap => consumption
-
-    #A la variable consumo se le agigna el valor que devuelva el método 
-    #current_consumption definido en el controlador
-    # consumo = HouseholdAppliance.current_consumption(user_id: params[:user_id])
-    # puts consumo
-    #En caso de que no se pueda llamar la función del controlador
-    #Toca crear un método en el modelo que devuelva un valor x
-    #   consumo = HouseholdAppliance.consumoDummy(user_id: params[:user_id]) 
-
-    #Prueba de WS
-    #consumo = 3.0
 
     #Se devuelve el consumo
     render :soap => consumption
