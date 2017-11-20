@@ -72,6 +72,25 @@ class HouseholdAppliancesController < ApplicationController
     else
       render json: "error"
     end
+  end 
+
+  
+  #GET /users/user_id/available
+
+  def appliances_available
+    @appliances = Array.new
+    @household_appliances = HouseholdAppliance.where("user_id = ?", params[:user_id])
+
+    if @household_appliances
+      for appliance in @household_appliances
+        if !appliance.outlet_id
+          @appliances.push(appliance)
+        end
+      end
+      render json: @appliances
+    else
+      render json: "error"
+    end
   end
 
   # GET /categories/:category_id/household_appliances
