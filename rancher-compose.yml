@@ -1,4 +1,4 @@
-contdb:
+db:
   scale: 2
-contapp:
+web:
   scale: 2

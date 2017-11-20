@@ -15,7 +15,7 @@ class WselectroController < ApplicationController
       #user.household_appliances.each do |ha|
       #  consumption = consumption + ha.consumption
       #  puts "lt.consumption = ", ha.consumption
-      end
+      #end
     end
 
 
